@@ -1055,6 +1055,10 @@ class mwSemantics(object):
         for attrib in attribs:
             name = attrib.name.lower()
             value = attrib.value
+            if value.startswith("'") or value.startswith('"'):
+                value = value[1:]
+            if value.endswith("'") or value.endswith('"'):
+                value = value[:-1]
             if name.startswith("data-"):
                 pass
             elif name not in whitelist:
